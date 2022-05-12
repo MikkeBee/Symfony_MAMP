@@ -16,7 +16,7 @@ class CRUDController extends AbstractController
     #[Route('/crud/list', name: 'crud')]
     public function index(EntityManagerInterface $em): Response
     {
-        $tasks = $em->getRepository(Task:: class)->findAll();
+        $tasks = $em->getRepository(Task:: class)->findBy([], ['id'=>'DESC']);
         return $this->render('crud/index.html.twig', ['tasks'=>$tasks]);
 
     }
@@ -38,16 +38,26 @@ class CRUDController extends AbstractController
     }
 
     #[Route('/update/{id}', name: 'update_task')]
-    public function update($id): Response
+    public function update($id, ManagerRegistry $doctrine): Response
     {
-        exit('crud update: update task' . $id);
+        $entityManager = $doctrine->getManager();
+        $task = $entityManager->getRepository(Task::class)->find($id);
+        $task->setStatus(!$task->getStatus());
+        $entityManager->flush();
+        return $this->redirectToRoute('crud');
+        // exit('crud update: update task' . $id);
 
     }
 
     #[Route('/delete/{id}', name: 'delete_task')]
-    public function delete($id): Response
+    public function delete($id, ManagerRegistry $doctrine): Response
     {
-        exit('crud update: update task' . $id);
+        $entityManager = $doctrine->getManager();
+        $id = $entityManager->getRepository(Task::class)->find($id);
+        $entityManager->remove($id);
+        $entityManager->flush();
+        return $this->redirectToRoute('crud');
+        // exit('crud update: update task' . $id);
 
     }
 }
