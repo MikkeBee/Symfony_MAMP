@@ -184,7 +184,7 @@
         "version": "v6.0.8"
     },
     "symfony/maker-bundle": {
-        "version": "1.42",
+        "version": "1.43",
         "recipe": {
             "repo": "github.com/symfony/recipes",
             "branch": "main",
@@ -280,9 +280,9 @@
         "version": "v6.0.3"
     },
     "twig/extra-bundle": {
-        "version": "v3.3.8"
+        "version": "v3.4.0"
     },
     "twig/twig": {
-        "version": "v3.3.10"
+        "version": "v3.4.1"
     }
 }

@@ -70,11 +70,10 @@
     "extra": {
         "symfony": {
             "allow-contrib": false,
-            "require": "6.0.*",
-            "docker": false
+            "require": "6.0.*"
         }
     },
     "require-dev": {
-        "symfony/maker-bundle": "^1.42"
+        "symfony/maker-bundle": "^1.43"
     }
 }
