@@ -1,5 +1,13 @@
 body {
-  background-color: lightgreen;
-  color: coral;
-  text-shadow: 0 0 1px rgb(120, 120, 120);
+  background-color: yellow;
+}
+
+nav {
+  display: flex;
+  align-items: center;
+}
+
+nav ul {
+  display: flex;
+  justify-content: center;
 }
